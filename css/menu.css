@@ -41,7 +41,7 @@ background: #EFEFEF;
 top: 0px;
 left: 100%;
 }
-#main_menu li:hover>.sub_menu {background: white; display: block; color: black}
+#main_menu li:hover>.sub_menu {background: white; display: block; color: black; }
 #main_menu>li>.sub_menu{top: 55px;position: absolute;left: 0px;font-size: 15px; color: black}
 #main_menu li:hover{ background: white}
 

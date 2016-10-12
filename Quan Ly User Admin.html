@@ -28,7 +28,7 @@
      
           <img src="admin.png" class="img-circle" align="left" width="100" height="100" /><strong>Xin chào Admin</strong><br>
           <br />
-          <a href="menu2.html"><u><strong>Đăng xuất</strong></u></a>
+          <a href="111.html"><u><strong>Đăng xuất</strong></u></a>
         
     <table class="table table-hover">
     <tbody>
@@ -72,38 +72,86 @@
                     <tbody>
                       <tr>
                         <td>
-                      <label><a href="Admin xem thong tin ca nhan user.html">Trần Văn A</a></label>
+                      <label><a id="ten1" href="Admin xem thong tin ca nhan user.html">Trần Văn A</a></label>
                   		</td>	
-                        <td>19 </td>
-                        <td>tranvana196</td>
-                      	<td>tranvana@gmail.com</td>
-                      	<td><label><input type="checkbox" value="" disabled checked=""><span style="color: green;"> Active</span></label></td>
+                        <td><p id="tuoi1">19</p> </td>
+                        <td><p id="username1">tranvana196</p></td>
+                      	<td><p id="mail1">tranvana@gmail.com</p></td>
+                      	<td><label><input id="link1" type="checkbox" value="" disabled checked=""><span style="color: green;"> Active</span></label></td>
                       </tr>
                         <tr>
                         <td>
-                    	  <label><a href="#">Nguyễn Văn Cya</a></label>
+                    	  <label><a id="ten2" href="#">Nguyễn Văn Cya</a></label>
                   		</td>	
-                        <td>21</td>
-                        <td>Cya78</td>
-                      	<td>Cya145@gmail.com</td>
-                      	<td><label><input type="checkbox" value="" disabled checked=""><span style="color: green;"> Active</span></label></td>
+                        <td><p id="tuoi2">21</p> </td>
+                        <td><p id="username2">Cya78</p></td>
+                        <td><p id="mail2">Cya145@gmail.com</p></td>
+                      	<td><label><input id="link2" type="checkbox" value="" disabled checked=""><span style="color: green;"> Active</span></label></td>
                       </tr>
                       <tr>
                         <td>
-                      <label><a href="#">Nguyễn Văn Tý</a></label>
+                      <label><a id="ten3" href="#">Nguyễn Văn Tý</a></label>
                   		</td>	
-                        <td>30</td>
-                        <td>TyNguyenAv123</td>
-                      	<td>nvty123@gmail.com</td>
-                      	<td><label><input type="checkbox" value="" disabled unchecked=""><span style="color: red;"> Disable</span></label></td>
+                        <td><p id="tuoi3">30</p> </td>
+                        <td><p id="username3">TyNguyenAv123</p></td>
+                        <td><p id="mail3">nvty123@gmail.com</p></td>
+                      	<td><label><input id="link3" type="checkbox" value="" disabled unchecked=""><span style="color: red;"> Disable</span></label></td>
                       </tr>
                     </tbody>
                   </table>
                   <br/>
                   <center>
-                  	<button class="btn btn-outline">1</button>
-                  	<button class="btn btn-primary">2</button>
+                  	<button class="btn btn-primary" onclick="laydanhsachUser(1)">1</button>
+                  	<button class="btn btn-primary" onclick="laydanhsachUser(2)">2</button>
                   	<button class="btn btn-primary">></button>
+                    <script type="text/javascript">
+                      function laydanhsachUser(trang){
+                        var xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = function(){
+                          if(xhr.readyState ===4 && xhr.status===200){
+                            var items = JSON.parse(xhr.responseText);
+                      
+                            var trangkt = trang * 3 -1;
+                            var trangbd = trangkt-2;
+                             var y = 0;
+                            for(var index=0;index<items.length;index++){
+                               
+                              if(index >= trangbd && index<= trangkt)
+                              {
+                                y= y+1;
+                                if(y==1){
+                                document.getElementById("ten1").innerHTML = items[index].ten;
+                                document.getElementById("tuoi1").innerHTML = items[index].tuoi;
+                                document.getElementById("link1").href = items[index].linkbai;
+                                document.getElementById("username1").innerHTML = items[index].username;
+                                document.getElementById("mail1").innerHTML = items[index].mail;
+                                
+                                }
+                                if(y==2){
+                                   document.getElementById("ten2").innerHTML = items[index].ten;
+                                document.getElementById("tuoi2").innerHTML = items[index].tuoi;
+                                document.getElementById("link2").href = items[index].linkbai;
+                                document.getElementById("username2").innerHTML = items[index].username;
+                                document.getElementById("mail2").innerHTML = items[index].mail;
+                                }
+                                if(y==3){
+                                 document.getElementById("ten3").innerHTML = items[index].ten;
+                                document.getElementById("tuoi3").innerHTML = items[index].tuoi;
+                                document.getElementById("link3").href = items[index].linkbai;
+                                document.getElementById("username3").innerHTML = items[index].username;
+                                document.getElementById("mail3").innerHTML = items[index].mail;
+                                }
+                               
+                              }
+                            }
+                         
+                          }
+                        }
+                        xhr.open("GET","quanlyuser.json","true");
+                        xhr.send();
+
+                      }
+                      </script>
                   </center>
           </div>   
         </div>
